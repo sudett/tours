@@ -1,0 +1,12 @@
+.heading {
+  text-align: center;
+  padding-top: 7rem;
+  font-size: 4rem;
+}
+
+.blue-line {
+  width: 10rem;
+  height: 4px;
+  margin: 0 auto;
+  background-color: var(--clr-primary-5);
+}

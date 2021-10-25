@@ -1,0 +1,93 @@
+.tour {
+  max-width: 60rem;
+  min-height: 55rem;
+  margin: 8rem auto;
+  box-shadow: var(--light-shadow);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.tour-image {
+  height: 35rem;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 4px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 3rem;
+}
+
+.tour-city {
+  text-transform: capitalize;
+  color: var(--clr-black);
+}
+
+.tour-price {
+  color: var(--clr-primary-6);
+  background-color: var(--clr-primary-10);
+  padding: 0.25rem 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.tour-info {
+  color: var(--clr-grey-5);
+  padding: 0 3rem;
+  letter-spacing: 0;
+}
+
+.btn {
+  display: block;
+  margin: 2rem auto;
+  color: var(--clr-red-dark);
+  border: 1px solid var(--clr-red-dark);
+  padding: 0.5rem 3rem;
+  background: none;
+  font-size: inherit;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.more,
+.less {
+  display: inline;
+}
+
+.dot {
+  font-weight: bold;
+}
+
+.blue-text {
+  font-size: 1.6rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .title {
+    flex-direction: column;
+  }
+
+  .tour-city {
+    margin-bottom: 1rem;
+  }
+}
