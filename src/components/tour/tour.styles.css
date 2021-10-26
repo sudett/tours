@@ -1,7 +1,7 @@
 .tour {
   max-width: 60rem;
   min-height: 55rem;
-  margin: 8rem auto;
+  margin: 3rem auto;
   box-shadow: var(--light-shadow);
   background-color: #fff;
   border-radius: 4px;
@@ -41,7 +41,6 @@
   padding: 0.1rem 1rem;
   border-radius: 3px;
   font-size: 1.6rem;
-  letter-spacing: 2px;
 }
 
 .tour-info {

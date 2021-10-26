@@ -12,7 +12,7 @@ export default class Tour extends React.Component {
   }
 
   render() {
-    const { image, name, info, price, id } = this.props;
+    const { image, name, info, price, id, deleteTour } = this.props;
     const { moreText } = this.state;
 
     return (
@@ -35,7 +35,9 @@ export default class Tour extends React.Component {
               {moreText ? "Show less" : "Read more"}
             </button>
           </div>
-          <button className="btn">Not interested</button>
+          <button className="btn" onClick={() => deleteTour(id)}>
+            Not interested
+          </button>
         </div>
       </div>
     );

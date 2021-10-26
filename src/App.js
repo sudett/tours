@@ -17,6 +17,7 @@ export default class App extends React.Component {
   }
 
   fetchTours = async () => {
+    this.setState({ isLoading: true });
     const response = await fetch(url);
     const tours = await response.json();
     this.setState({ tours, isLoading: false }, () =>
@@ -28,13 +29,26 @@ export default class App extends React.Component {
     this.fetchTours();
   }
 
+  deleteTour = (id) => {
+    const tours = this.state.tours.filter((tour) => tour.id !== id);
+    this.setState({ tours });
+  };
+
+  handleRefresh = () => {
+    this.fetchTours();
+  };
+
   render() {
     return (
       <div className="App">
         {this.state.isLoading ? (
           <h1 className="loading">Loading ...</h1>
         ) : (
-          <Tours tours={this.state.tours} />
+          <Tours
+            tours={this.state.tours}
+            deleteTour={this.deleteTour}
+            handleRefresh={this.handleRefresh}
+          />
         )}
       </div>
     );
