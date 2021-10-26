@@ -8,8 +8,8 @@ const Tours = ({ tours }) => (
   <div>
     <h1 className="heading">Our Tours</h1>
     <p className="blue-line"></p>
-    {tours.map(({ id, ...otherProps }) => (
-      <Tour key={id} {...otherProps} />
+    {tours.map((tour) => (
+      <Tour key={tour.id} {...tour} />
     ))}
   </div>
 );
