@@ -1,45 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-import "./tour.styles.css";
+import {
+  TourContainer,
+  TourImage,
+  TourContent,
+  TourTitle,
+  TourCity,
+  TourPrice,
+  TourInfo,
+  ButtonBlue,
+  Button,
+} from "./tour.styles";
 
-export default class Tour extends React.Component {
-  constructor(props) {
-    super(props);
+const Tour = ({ image, name, info, price, id, deleteTour }) => {
+  const [moreText, setMoreText] = useState(false);
 
-    this.state = {
-      moreText: false,
-    };
-  }
+  return (
+    <TourContainer>
+      <TourImage style={{ backgroundImage: `url(${image})` }} />
+      <TourContent>
+        <TourTitle>
+          <TourCity>{name}</TourCity>
+          <TourPrice>${price}</TourPrice>
+        </TourTitle>
+        <TourInfo>
+          {moreText ? info : info.slice(0, 200).concat("...")}
+          <ButtonBlue onClick={() => setMoreText(!moreText)}>
+            {moreText ? "Show less" : "Read more"}
+          </ButtonBlue>
+        </TourInfo>
+        <Button onClick={() => deleteTour(id)}>Not interested</Button>
+      </TourContent>
+    </TourContainer>
+  );
+};
 
-  render() {
-    const { image, name, info, price, id, deleteTour } = this.props;
-    const { moreText } = this.state;
-
-    return (
-      <div className="tour">
-        <div
-          className="tour-image"
-          style={{ backgroundImage: `url(${image})` }}
-        />
-        <div className="content">
-          <div className="title">
-            <h4 className="tour-city">{name}</h4>
-            <h4 className="tour-price">${price}</h4>
-          </div>
-          <div className="tour-info">
-            {moreText ? info : info.slice(0, 200).concat("...")}
-            <button
-              className="btn-blue"
-              onClick={() => this.setState({ moreText: !moreText })}
-            >
-              {moreText ? "Show less" : "Read more"}
-            </button>
-          </div>
-          <button className="btn" onClick={() => deleteTour(id)}>
-            Not interested
-          </button>
-        </div>
-      </div>
-    );
-  }
-}
+export default Tour;

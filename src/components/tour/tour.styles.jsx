@@ -1,13 +1,15 @@
-.tour {
+import styled from "styled-components";
+
+export const TourContainer = styled.div`
   max-width: 60rem;
   min-height: 55rem;
   margin: 3rem auto;
   box-shadow: var(--light-shadow);
   background-color: #fff;
   border-radius: 4px;
-}
+`;
 
-.tour-image {
+export const TourImage = styled.div`
   height: 35rem;
   width: 100%;
   background-size: cover;
@@ -15,41 +17,49 @@
   overflow: hidden;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
+`;
 
-.content {
+export const TourContent = styled.div`
   display: flex;
   flex-direction: column;
-}
+`;
 
-.title {
+export const TourTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2.5rem 3rem;
-}
 
-.tour-city {
+  @media only screen and (max-width: 37.5em) {
+    flex-direction: column;
+  }
+`;
+
+export const TourCity = styled.h4`
   text-transform: capitalize;
   text-align: center;
   color: var(--clr-black);
-}
 
-.tour-price {
+  @media only screen and (max-width: 37.5em) {
+    margin-bottom: 1rem;
+  }
+`;
+
+export const TourPrice = styled.h4`
   color: var(--clr-primary-5);
   background-color: var(--clr-primary-10);
   padding: 0.1rem 1rem;
   border-radius: 3px;
   font-size: 1.6rem;
-}
+`;
 
-.tour-info {
+export const TourInfo = styled.div`
   color: var(--clr-grey-5);
   padding: 0 3rem;
   letter-spacing: 0;
-}
+`;
 
-.btn-blue {
+export const ButtonBlue = styled.button`
   border: none;
   outline: none;
   background: none;
@@ -58,9 +68,9 @@
   text-transform: capitalize;
   margin-left: 0.5rem;
   cursor: pointer;
-}
+`;
 
-.btn {
+export const Button = styled.button`
   display: block;
   margin: 2rem auto;
   color: var(--clr-red-dark);
@@ -72,14 +82,4 @@
   text-transform: capitalize;
   letter-spacing: inherit;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 37.5em) {
-  .title {
-    flex-direction: column;
-  }
-
-  .tour-city {
-    margin-bottom: 1rem;
-  }
-}
+`;

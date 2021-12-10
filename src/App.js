@@ -1,56 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Tours from "./components/tours/tours.component";
+import Loading from "./components/loading/loading.component";
 
 import "./App.css";
 
 const url = "https://course-api.com/react-tours-project";
 
-export default class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [tours, setTours] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    this.state = {
-      tours: [],
-      isLoading: true,
-    };
-  }
+  const fetchTours = async () => {
+    setIsLoading(true);
 
-  fetchTours = async () => {
-    this.setState({ isLoading: true });
-    const response = await fetch(url);
-    const tours = await response.json();
-    this.setState({ tours, isLoading: false }, () =>
-      console.log(this.state.tours)
-    );
+    try {
+      const response = await fetch(url);
+      const tours = await response.json();
+      setIsLoading(false);
+      setTours(tours);
+
+      console.log(tours);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error.message);
+    }
   };
 
-  componentDidMount() {
-    this.fetchTours();
-  }
+  useEffect(() => fetchTours(), []);
 
-  deleteTour = (id) => {
-    const tours = this.state.tours.filter((tour) => tour.id !== id);
-    this.setState({ tours });
+  const deleteTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
   };
 
-  handleRefresh = () => {
-    this.fetchTours();
+  const handleRefresh = () => {
+    fetchTours();
   };
 
-  render() {
-    return (
-      <div className="App">
-        {this.state.isLoading ? (
-          <h1 className="loading">Loading ...</h1>
-        ) : (
-          <Tours
-            tours={this.state.tours}
-            deleteTour={this.deleteTour}
-            handleRefresh={this.handleRefresh}
-          />
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Tours
+          tours={tours}
+          deleteTour={deleteTour}
+          handleRefresh={handleRefresh}
+        />
+      )}
+    </div>
+  );
+};
+
+export default App;
