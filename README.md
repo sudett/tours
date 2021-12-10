@@ -1,3 +1,5 @@
+In this project i learned more about choosing right position for my state. When i should put state on the parent and when put it directly on the children so just that specific component get render not the other siblins.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
